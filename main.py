@@ -19,8 +19,8 @@ libsvm_tools = os.path.join(current_dir, "libsvm-3.36", "tools")
 sys.path.append(libsvm_python)
 sys.path.append(libsvm_tools)
 
-print("开始加载训练数据...")
 # Training
+print("开始加载训练数据...")
 train_dir = 'D:\\dataset\\MNIST\\train'   #Please specify your data directory. 
 ratioTraining = 0.95
 xTraining, xValidation, yTraining, yValidation = load_mnist_data(
@@ -29,9 +29,9 @@ xTraining, xValidation, yTraining, yValidation = load_mnist_data(
     ratio_training=0.95,
     random_state=42
 )
-print("开始加载测试数据...")
 
 # Testing
+print("开始加载测试数据...")
 test_dir = 'D:\\dataset\\MNIST\\test'
 xTesting, yTesting = load_mnist_data(test_dir, is_training=False)
 
@@ -94,7 +94,7 @@ p_label_test, p_acc_test, p_val_test = svm_predict(y_Testing.tolist(), x_test_sv
 print(f"\n测试集准确率: {p_acc_test[0]:.2f}%")
 
 model_classes = loaded_model.get_labels()
-print("模型中的类别顺序：", model_classes)  # 应输出 [0,1,2,3,4,5,6,7,8,9]
+print("模型中的类别顺序：", model_classes)
 
 # 绘制混淆矩阵
 print("\n绘制混淆矩阵...")
@@ -123,7 +123,7 @@ for i in range(3):
     print(f"真实标签二值化：{y_test_binarized[i]}")
     # 从二值化结果中找到真实类别在 model_classes 中的索引
     true_idx = np.argmax(y_test_binarized[i])
-    true_class = model_classes[true_idx]  # 真实类别值
+    true_class = model_classes[true_idx]
     print(f"真实类别：{true_class}（在模型类别中的索引：{true_idx}）")
     # 预测分数（列顺序与 model_classes 一致）
     print(f"预测分数：{y_score[i]}")

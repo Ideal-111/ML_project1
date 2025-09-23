@@ -12,5 +12,5 @@ python main.py
 ## 文件
 
 - libsvm-3.36是libsvm最新版本，放在根目录下，请勿移动位置
-- data中未存放MINIST数据集，请自行下载，共60000张图片（50000训练+10000测试）
+- data中存放了MINIST数据集的压缩包，请自行解压，共60000张图片（50000训练+10000测试）
 - WhetherLinearSeparable.py 用于判断一个训练数据集是否线性可分

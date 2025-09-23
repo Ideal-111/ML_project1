@@ -47,6 +47,7 @@ x_test_svm = convert_to_libsvm_format(xTesting)
 print(f"转换后训练特征数：{len(x_train_svm)}，训练标签数：{len(y_Training)}")
 assert len(x_train_svm) == len(y_Training), "转换后训练集特征与标签数量不匹配"
 
+# 选取最佳参数 c 和 g
 # c_candidates = [-1, 0, 1, 2, 3, 4]
 # g_candidates = [-5, -4, -3, -2, -1, 0]
 # best_acc = 0
@@ -73,7 +74,7 @@ assert len(x_train_svm) == len(y_Training), "转换后训练集特征与标签�
 param = '-s 0 -t 2 -c 8 -g 0.03125 -b 1' # best performance
 
 # print("开始训练SVM模型...")
-# # 训练模型
+# # 训练模型，后续可保存并直接加载
 # model = svm_train(y_Training.tolist(), x_train_svm, param)
 
 model_path = "svm_model.model"

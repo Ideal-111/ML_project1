@@ -4,7 +4,7 @@ from sklearn.decomposition import PCA # type: ignore
 from sklearn.svm import SVC # type: ignore
 def whetherLinearSeparable(X):
     """
-    使用感知机算法判断数据集是否线性可分
+    使用SVM算法判断数据集是否线性可分
     
     参数:
     X (numpy.ndarray): 训练数据集，最后一列是标签（+1或-1）
@@ -18,16 +18,12 @@ def whetherLinearSeparable(X):
     labels = X[:, -1]    
 
     # 初始化一个线性 SVM 分类器
-    # C 是 SVM 的正则化参数，控制对误分类样本的惩罚力度，C 越大，模型越严格
-    model = SVC(kernel='linear', C=1000000)
+    # C 是 SVM 的正则化参数，控制对误分类样本的惩罚力度，C 越大，模型越严格，但是可能导致过拟合
+    model = SVC(kernel='linear', C=10)
 
     # 训练模型
-    try:
-        model.fit(features, labels)
-    except ValueError:
-        # 若数据集只有一个类别，则天然可分
-        return 1
-
+    model.fit(features, labels)
+  
     # 如果准确率为1.0，则说明 SVM 找到了能完美分割两类数据的超平面
     score = model.score(features, labels)
 
@@ -88,7 +84,7 @@ def plot(data, title='数据集可视化'):
 
 # --- 运行结果示例 ---
 
-# 示例一：二维线性可分数据集
+# 示例一：二维非线性可分数据集
 separable = np.array([
     [-0.5, 0, 1], [3.5, 4.1, -1], [4.5, 6, -1],
     [-2, -2, -1], [-4.1, -2.8, -1], [1, 3, -1],

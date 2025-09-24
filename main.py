@@ -21,7 +21,7 @@ sys.path.append(libsvm_tools)
 
 # Training
 print("开始加载训练数据...")
-train_dir = 'D:\\dataset\\MNIST\\train'   #Please specify your data directory. 
+train_dir = 'D:\\dataset\\MNIST\\train'   # lease specify your data directory. 
 ratioTraining = 0.95
 xTraining, xValidation, yTraining, yValidation = load_mnist_data(
     train_dir,
